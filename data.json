@@ -1,0 +1,20 @@
+{
+    "users": {
+        "Nellissa Bagula": {
+            "password": "pbkdf2:sha256:600000$XBG1aMNQ3fEA3vUs$abbba9ae8ceb4ae11e235470372a5037d19a4fe1f270727cd4826c565beb1f0d",
+            "created_at": "2025-12-12 10:51:42"
+        }
+    },
+    "entries": [
+        {
+            "id": 1,
+            "title": "My first diary entry",
+            "content": "Today I started my personal diary project. Feeling excited about documenting my journe",
+            "date": "2025-12-12 10:55:49",
+            "tags": [
+                "work"
+            ],
+            "is_private": true
+        }
+    ]
+}

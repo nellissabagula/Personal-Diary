@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}{{ entry.title }} - Personal Diary{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-10 mx-auto">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>{{ entry.title }}</h3>
+                <small class="text-muted">{{ entry.date }}</small>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    {{ entry.content|replace('\n', '<br>')|safe }}
+                </div>
+                
+                {% if entry.tags %}
+                <div class="mb-3">
+                    <strong>Tags:</strong>
+                    {% for tag in entry.tags %}
+                    <span class="badge bg-secondary me-1">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                {% if entry.is_private %}
+                <div class="alert alert-warning">
+                    <i class="bi bi-lock"></i> This entry is marked as private
+                </div>
+                {% endif %}
+                
+                <div class="d-flex justify-content-end">
+                    <a href="{{ url_for('edit_entry', entry_id=entry.id) }}" class="btn btn-outline-secondary me-2">Edit</a>
+                    <form method="POST" action="{{ url_for('delete_entry', entry_id=entry.id) }}" class="d-inline">
+                        <button type="submit" class="btn btn-outline-danger" 
+                                onclick="return confirm('Are you sure you want to delete this entry?')">Delete</button>
+                    </form>
+                    <a href="{{ url_for('index') }}" class="btn btn-outline-primary ms-2">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
